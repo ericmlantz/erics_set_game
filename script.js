@@ -1,8 +1,10 @@
+//Card Properties
 shapes = ['diamond', 'squiggle', 'oval']
 colors = ['red', 'purple', 'green']
 numbers = ['one', 'two', 'three']
 shading = ['solid', 'striped', 'outlined']
 
+//Card Class that has the blueprint for what each card must have: shape, color, number, and shading
 class Card {
   constructor(shape, color, shade, number) {
     this.shape = shape
@@ -12,6 +14,7 @@ class Card {
   }
 }
 
+//Deck Array that uses a for loop to cycle through and create a deck of 81 unique cards and turns them into new card objects.
 const deck = []
 for (let shapesIndex = 0; shapesIndex < shapes.length; shapesIndex++) {
   for (let colorsIndex = 0; colorsIndex < colors.length; colorsIndex++) {
