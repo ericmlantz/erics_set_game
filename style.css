@@ -1,3 +1,16 @@
+:root {
+  --blue: #039BE5;
+  --strippedBack: repeating-linear-gradient(
+    to right,
+    #039BE5,
+    #039BE5 4px,
+    #ffffff 4px,
+    #ffffff 8px
+  ); 
+}
+
+
+
 .stripped {
   background: repeating-linear-gradient(
     to right,
@@ -23,14 +36,14 @@
   border-radius: 50px;
 }
 
-/* .outline {
+.outline {
   border: #039BE5 solid 4px;
   width: 90px;
   height: 90px;
   margin: 10px;
   box-sizing: border-box;
   border-radius: 50px;
-} */
+}
 
 .rectangle {
   width: 90px;
@@ -45,4 +58,25 @@
   margin: 10px;
   box-sizing: border-box;
   border: #5ad725 solid 4px;
+}
+
+.plus {
+  display:flex;
+  left: 40px;
+  background: purple;
+  height: 100px;
+  position: relative;
+  width: 20px;
+  border:purple solid 1px;
+  justify-content: center;
+  
+}
+.plus:after {
+  background: purple; 
+  content: "";
+  height: 20px;
+  position: absolute;
+  top: 40px;
+  width: 90px;
+  border: purple solid 1px;
 }
