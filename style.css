@@ -1,0 +1,48 @@
+.stripped {
+  background: repeating-linear-gradient(
+    to right,
+    #039BE5,
+    #039BE5 4px,
+    #ffffff 4px,
+    #ffffff 8px
+  ); 
+  border: #039BE5 solid 2px;
+  width: 90px;
+  height: 90px;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.solid {
+  background-color:#8c37ed;
+  border: #8c37ed solid 2px;
+  width: 90px;
+  height: 90px;
+  margin: 10px;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+
+/* .outline {
+  border: #039BE5 solid 4px;
+  width: 90px;
+  height: 90px;
+  margin: 10px;
+  box-sizing: border-box;
+  border-radius: 50px;
+} */
+
+.rectangle {
+  width: 90px;
+  height: 20px;
+  background: repeating-linear-gradient(
+    to right,
+    #5ad725,
+    #5ad725 4px,
+    #ffffff 4px,
+    #ffffff 8px
+  ); 
+  margin: 10px;
+  box-sizing: border-box;
+  border: #5ad725 solid 4px;
+}
