@@ -1,0 +1,18 @@
+h1 {
+  font-size: 50px;
+  text-align: center;
+}
+
+.playerInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playerNameSpot {
+  margin: 5px;
+}
+
+.labelAndInput {
+  font-weight: bold;
+}
