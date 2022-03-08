@@ -6,7 +6,21 @@
   row-gap: 15px;
   column-gap: 15px;
 }
+.reShuffle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+}
 
+.getCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+}
 /* Individual cards style */
 .card {
   display: flex;
@@ -18,6 +32,7 @@
   border-radius: 8px;
 }
 
+/*Inner Shape Default Style */
 .blankShape {
   width: 40px;
   height: 40px;
@@ -31,31 +46,8 @@
 /* ------------ */
 }
 
-/* .plus {
-  display:flex;
-  left: 40px;
-  background: purple;
-  height: 100px;
-  position: relative;
-  width: 20px;
-  border:purple solid 1px;
-  justify-content: center;
-  
-}
-.plus:after {
-  background: purple; 
-  content: "";
-  height: 20px;
-  position: absolute;
-  top: 40px;
-  width: 90px;
-  border: purple solid 1px;
-} */
-
-
 /* Shading Properties */
-
-.blueStriped {
+.stripedBlue {
   background:repeating-linear-gradient(
     to right,
     #039BE5 2px,
@@ -65,7 +57,7 @@
     border-color: #039BE5;
 }
 
-.greenStriped {
+.stripedGreen {
   background:repeating-linear-gradient(
     to right,
     #5ad725 2px,
@@ -75,7 +67,7 @@
     border-color: #5ad725;
 }
 
-.purpleStriped {
+.stripedPurple {
   background:repeating-linear-gradient(
     to right,
     #8c37ed 2px,
@@ -85,19 +77,17 @@
     border-color: #8c37ed;
 }
 
-.solid {
+.Solid {
   background:#8c37ed;
   border-color: #8c37ed;
 }
 
-.outline {
+.Outline {
   border-color: #8c37ed;
 }
-
 /* -------------------- */
 
 /* Shape Properties */
-
 .circle {
   border-radius: 50px;
 }
@@ -105,3 +95,9 @@
 .square {
   border-radius: 0px;
 }
+
+.semiCircle {
+  border-radius: 10rem 10rem 0 0;
+}
+/* -------------------- */
+
