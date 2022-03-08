@@ -1,16 +1,20 @@
 //Card Properties
-shapes = ['diamond', 'squiggle', 'oval']
-colors = ['red', 'purple', 'green']
+shapes = ['square', 'circle', 'plus']
+colors = ['green', 'blue', 'purple']
 numbers = ['one', 'two', 'three']
 shading = ['solid', 'striped', 'outlined']
 
+//Global DOM Variables
+let gridSpace1 = document.getElementById('c1')
+let gameGridJS = document.querySelector('.gameGrid')
+
 //Card Class that has the blueprint for what each card must have: shape, color, number, and shading
 class Card {
-  constructor(shape, color, shade, number) {
+  constructor(shape, color, number, shade) {
     this.shape = shape
     this.color = color
-    this.shade = shade
     this.number = number
+    this.shade = shade
   }
 }
 
@@ -36,3 +40,7 @@ for (let shapesIndex = 0; shapesIndex < shapes.length; shapesIndex++) {
   }
 }
 console.log(deck)
+
+let cardProperty = document.createElement('div')
+gridSpace1.appendChild(cardProperty)
+cardProperty.className = 'blankShape outline square'

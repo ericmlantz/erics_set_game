@@ -1,66 +1,37 @@
-:root {
-  --blue: #039BE5;
-  --strippedBack: repeating-linear-gradient(
-    to right,
-    #039BE5,
-    #039BE5 4px,
-    #ffffff 4px,
-    #ffffff 8px
-  ); 
+/* Container for the 12 cards game grid */
+.gameGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  row-gap: 15px;
+  column-gap: 15px;
 }
 
+/* Individual cards style */
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  border: black solid 1px;
+  border-radius: 8px;
+}
 
-
-.stripped {
-  background: repeating-linear-gradient(
-    to right,
-    #039BE5,
-    #039BE5 4px,
-    #ffffff 4px,
-    #ffffff 8px
-  ); 
-  border: #039BE5 solid 2px;
-  width: 90px;
-  height: 90px;
+.blankShape {
+  width: 40px;
+  height: 40px;
   margin: 10px;
   box-sizing: border-box;
+  border-style: solid;
+  border-width: 2px;
+/*Items that will be altered in JS */
+  border-color: #000000;
+  background: white;
+/* ------------ */
 }
 
-.solid {
-  background-color:#8c37ed;
-  border: #8c37ed solid 2px;
-  width: 90px;
-  height: 90px;
-  margin: 10px;
-  box-sizing: border-box;
-  border-radius: 50px;
-}
-
-.outline {
-  border: #039BE5 solid 4px;
-  width: 90px;
-  height: 90px;
-  margin: 10px;
-  box-sizing: border-box;
-  border-radius: 50px;
-}
-
-.rectangle {
-  width: 90px;
-  height: 20px;
-  background: repeating-linear-gradient(
-    to right,
-    #5ad725,
-    #5ad725 4px,
-    #ffffff 4px,
-    #ffffff 8px
-  ); 
-  margin: 10px;
-  box-sizing: border-box;
-  border: #5ad725 solid 4px;
-}
-
-.plus {
+/* .plus {
   display:flex;
   left: 40px;
   background: purple;
@@ -79,4 +50,58 @@
   top: 40px;
   width: 90px;
   border: purple solid 1px;
+} */
+
+
+/* Shading Properties */
+
+.blueStriped {
+  background:repeating-linear-gradient(
+    to right,
+    #039BE5 2px,
+    #039BE5 4px,
+    #ffffff 4px,
+    #ffffff 7px);
+    border-color: #039BE5;
+}
+
+.greenStriped {
+  background:repeating-linear-gradient(
+    to right,
+    #5ad725 2px,
+    #5ad725 4px,
+    #ffffff 4px,
+    #ffffff 7px);
+    border-color: #5ad725;
+}
+
+.purpleStriped {
+  background:repeating-linear-gradient(
+    to right,
+    #8c37ed 2px,
+    #8c37ed 4px,
+    #ffffff 4px,
+    #ffffff 7px);
+    border-color: #8c37ed;
+}
+
+.solid {
+  background:#8c37ed;
+  border-color: #8c37ed;
+}
+
+.outline {
+  border-color: #8c37ed;
+}
+
+/* -------------------- */
+
+/* Shape Properties */
+
+.circle {
+  border-radius: 50px;
+}
+
+.square {
+  border-radius: 0px;
 }
