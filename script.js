@@ -7,23 +7,22 @@ shading = ['solid', 'striped', 'outline']
 //GLOBAL DOM VARIABLES
 
 //Grid Spaces Variables
-let gridSpace0 = document.getElementById('c0')
-let gridSpace1 = document.getElementById('c1')
-let gridSpace2 = document.getElementById('c2')
-let gridSpace3 = document.getElementById('c3')
-let gridSpace4 = document.getElementById('c4')
-let gridSpace5 = document.getElementById('c5')
-let gridSpace6 = document.getElementById('c6')
-let gridSpace7 = document.getElementById('c7')
-let gridSpace8 = document.getElementById('c8')
-let gridSpace9 = document.getElementById('c9')
-let gridSpace10 = document.getElementById('c10')
-let gridSpace11 = document.getElementById('c11')
+// let gridSpace0 = document.getElementById('c0')
+// let gridSpace1 = document.getElementById('c1')
+// let gridSpace2 = document.getElementById('c2')
+// let gridSpace3 = document.getElementById('c3')
+// let gridSpace4 = document.getElementById('c4')
+// let gridSpace5 = document.getElementById('c5')
+// let gridSpace6 = document.getElementById('c6')
+// let gridSpace7 = document.getElementById('c7')
+// let gridSpace8 = document.getElementById('c8')
+// let gridSpace9 = document.getElementById('c9')
+// let gridSpace10 = document.getElementById('c10')
+// let gridSpace11 = document.getElementById('c11')
 let reShuffleDeck = document.querySelector('.reShuffle')
 let getCardJS = document.querySelector('.getCard')
 //Game Grid Variable
 let gameGridJS = document.querySelector('.gameGrid')
-let addCard = []
 
 //Deck Variables
 let deck = []
@@ -112,71 +111,59 @@ shuffleDeck(deck)
 //Function to get 'top' card in the deck
 function addCardToGrid() {
   addCard = deck.shift()
-  addProperties()
+  return addCard
 }
 //----------------------------
 
-//Grid Space Array
-
+//Grid Space Arrayg
+gridSpace = []
+for (let i = 0; i < 12; i++) {
+  gridSpace.push(document.getElementById(`c${i}`))
+  const topCard = addCardToGrid()
+  addProperties(i, topCard)
+}
+console.log(gridSpace)
 //Set the properties of a newly gotten card to a space on the grid
-function addProperties() {
-  const gridSpace = [
-    gridSpace0,
-    gridSpace1,
-    gridSpace2,
-    gridSpace3,
-    gridSpace4,
-    gridSpace5,
-    gridSpace6,
-    gridSpace7,
-    gridSpace8,
-    gridSpace9,
-    gridSpace10,
-    gridSpace11
-  ]
-
-  console.log(gridSpace[3])
-  for (let i = 0; i < 12; i++) {
-    if (addCard.number === 'one') {
-      let cardNumber1 = document.createElement('div')
-      cardNumber1.className += 'blankShape '
-      cardNumber1.className += addCard.shape + ' '
-      cardNumber1.className += addCard.shade
-      cardNumber1.className += addCard.color
-      gridSpace[i].appendChild(CardNumber1)
-    } else if (addCard.number === 'two') {
-      let cardNumber1 = document.createElement('div')
-      cardNumber1.className += 'blankShape '
-      cardNumber1.className += addCard.shape + ' '
-      cardNumber1.className += addCard.shade
-      cardNumber1.className += addCard.color
-      gridSpace[i].appendChild(cardNumber1)
-      let cardNumber2 = document.createElement('div')
-      cardNumber2.className += 'blankShape '
-      cardNumber2.className += addCard.shape + ' '
-      cardNumber2.className += addCard.shade
-      cardNumber2.className += addCard.color
-      gridSpace[i].appendChild(cardNumber2)
-    } else {
-      let cardNumber1 = document.createElement('div')
-      cardNumber1.className += 'blankShape '
-      cardNumber1.className += addCard.shape + ' '
-      cardNumber1.className += addCard.shade
-      cardNumber1.className += addCard.color
-      gridSpace[i].appendChild(cardNumber1)
-      let cardNumber2 = document.createElement('div')
-      cardNumber2.className += 'blankShape '
-      cardNumber2.className += addCard.shape + ' '
-      cardNumber2.className += addCard.shade
-      cardNumber2.className += addCard.color
-      gridSpace[i].appendChild(cardNumber2)
-      let cardNumber3 = document.createElement('div')
-      cardNumber3.className += 'blankShape '
-      cardNumber3.className += addCard.shape + ' '
-      cardNumber3.className += addCard.shade
-      cardNumber3.className += addCard.color
-      gridSpace[i].appendChild(cardNumber3)
-    }
+function addProperties(location, topCard) {
+  if (topCard.number === 'one') {
+    let cardNumber1 = document.createElement('div')
+    cardNumber1.className += 'blankShape '
+    cardNumber1.className += topCard.shape + ' '
+    cardNumber1.className += topCard.shade
+    cardNumber1.className += topCard.color
+    gridSpace[location].appendChild(cardNumber1)
+  } else if (topCard.number === 'two') {
+    let cardNumber1 = document.createElement('div')
+    cardNumber1.className += 'blankShape '
+    cardNumber1.className += topCard.shape + ' '
+    cardNumber1.className += topCard.shade
+    cardNumber1.className += topCard.color
+    gridSpace[location].appendChild(cardNumber1)
+    let cardNumber2 = document.createElement('div')
+    cardNumber2.className += 'blankShape '
+    cardNumber2.className += topCard.shape + ' '
+    cardNumber2.className += topCard.shade
+    cardNumber2.className += topCard.color
+    gridSpace[location].appendChild(cardNumber2)
+  } else {
+    let cardNumber1 = document.createElement('div')
+    cardNumber1.className += 'blankShape '
+    cardNumber1.className += topCard.shape + ' '
+    cardNumber1.className += topCard.shade
+    cardNumber1.className += topCard.color
+    gridSpace[location].appendChild(cardNumber1)
+    let cardNumber2 = document.createElement('div')
+    cardNumber2.className += 'blankShape '
+    cardNumber2.className += topCard.shape + ' '
+    cardNumber2.className += topCard.shade
+    cardNumber2.className += topCard.color
+    gridSpace[location].appendChild(cardNumber2)
+    let cardNumber3 = document.createElement('div')
+    cardNumber3.className += 'blankShape '
+    cardNumber3.className += topCard.shape + ' '
+    cardNumber3.className += topCard.shade
+    cardNumber3.className += topCard.color
+    gridSpace[location].appendChild(cardNumber3)
   }
 }
 
