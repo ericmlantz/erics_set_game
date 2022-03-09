@@ -4,9 +4,8 @@ colors = ['Green', 'Blue', 'Purple']
 numbers = ['one', 'two', 'three']
 shading = ['solid', 'striped', 'outline']
 
-//GLOBAL DOM VARIABLES
-
 //NOT CURRENTLY USING. CAN DELETE IF NOT USED BY END OF CREATION.
+
 //Grid Spaces Variables
 // let gridSpace0 = document.getElementById('c0')
 // let gridSpace1 = document.getElementById('c1')
@@ -20,6 +19,8 @@ shading = ['solid', 'striped', 'outline']
 // let gridSpace9 = document.getElementById('c9')
 // let gridSpace10 = document.getElementById('c10')
 // let gridSpace11 = document.getElementById('c11')
+
+//GLOBAL DOM VARIABLES
 let checkSetJS = document.querySelector('.checkSet')
 let reShuffleDeck = document.querySelector('.reShuffle')
 let getCardJS = document.querySelector('.getCard')
@@ -151,9 +152,57 @@ function addProperties(location, topCard) {
   }
 }
 
+let numbersVerified = false
+let shapeVerified = false
+let shadeVerified = false
+let colorVerified = false
+
+function activateComparison() {
+  checkForSet()
+  if (
+    numbersVerified === true &&
+    (shapeVerified === true) & (shadeVerified === true) &&
+    colorVerified === true
+  ) {
+    console.log('You got a SET!')
+  }
+  //resetFoundSet()
+}
+
+//Not worked on yet
+function resetFoundSet() {
+  checkSetJS.style.display = 'none'
+  checkSetJS.removeEventListener('click', activateComparison)
+  currentChoice = []
+}
+
 //Compare Cards to One Another To See if Set Found for Use in selectCard() Function
 function checkForSet() {
-  checkSetJS.style.display = 'flex'
+  // let c1 = currentChoice[0].childNodes[0].classList[1]
+  // console.log(c1.number)
+  // let c2 = currentChoice[1].childNodes[0].classList[1]
+  // console.log(c2.number)
+  // let c3 = currentChoice[2].childNodes[0].classList[1]
+  // console.log(c3.number)
+  if (
+    (currentChoice[0].childNodes[0].classList[1] ===
+      currentChoice[1].childNodes[0].classList[1] &&
+      currentChoice[1].childNodes[0].classList[1] ===
+        currentChoice[2].childNodes[0].classList[1]) ||
+    (currentChoice[0].childNodes[0].classList[1] !==
+      currentChoice[1].childNodes[0].classList[1] &&
+      currentChoice[1].childNodes[0].classList[1] !==
+        currentChoice[2].childNodes[0].classList[1] &&
+      currentChoice[1].childNodes[0].classList[1] !==
+        currentChoice[2].childNodes[0].classList[1])
+  ) {
+    if ()
+    console.log('NumberVerify will be set to True')
+    numbersVerified = true
+  } else {
+    console.log('Not not in a set, sorry!')
+  }
+  resetFoundSet()
 }
 
 //Empty Array for selection when user is choosing SET
@@ -166,7 +215,9 @@ function selectCard(e) {
     console.log(currentChoice)
   }
   if (currentChoice.length === 3) {
+    checkSetJS.style.display = 'flex'
     checkForSet()
+    // checkSetJS.addEventListener('click', checkForSet)
   }
 }
 
@@ -180,7 +231,6 @@ reShuffleDeck.addEventListener('click', shuffleDeck)
 for (let i = 0; i < 12; i++) {
   gridSpace[i].addEventListener('click', selectCard)
 }
-
 //Event Listener for Check Selected Cards for Set
 //Click Check Button
 

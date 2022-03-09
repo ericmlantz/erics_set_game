@@ -1,3 +1,1 @@
-1. player clicks 'SET Button'
-2. player chooses cards in their SET
-3. cards are compared to identify if they are a Set
+FIGURE OUT HOW TO NOT ALL SOMEONE TO PICK SAME CARD TWICE!
