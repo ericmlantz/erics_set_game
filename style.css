@@ -6,21 +6,7 @@
   row-gap: 15px;
   column-gap: 15px;
 }
-.reShuffle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 10px;
-}
 
-.getCard {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 10px;
-}
 /* Individual cards style */
 .card {
   display: flex;
@@ -77,12 +63,28 @@
     border-color: #8c37ed;
 }
 
-.Solid {
+/* Solid Property of Shading */
+.solidBlue {
+  background:#039BE5;
+  border-color: #039BE5;
+}
+.solidGreen {
+  background:#5ad725;
+  border-color: #5ad725;
+}
+.solidPurple {
   background:#8c37ed;
   border-color: #8c37ed;
 }
 
-.Outline {
+/* Outline Property of Shading */
+.outlineBlue {
+  border-color: #039BE5;
+}
+.outlineGreen {
+  border-color: #5ad725;
+}
+.outlinePurple {
   border-color: #8c37ed;
 }
 /* -------------------- */
@@ -101,3 +103,20 @@
 }
 /* -------------------- */
 
+/* Game Play Buttons */
+.reShuffle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.getCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+}
+/* -------------------- */

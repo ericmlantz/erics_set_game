@@ -116,35 +116,67 @@ function addCardToGrid() {
 }
 //----------------------------
 
+//Grid Space Array
+
 //Set the properties of a newly gotten card to a space on the grid
 function addProperties() {
-  if (addCard.number === 'one') {
-    let cardNumber1 = document.createElement('div')
-    cardNumber1.className += 'blankShape '
-    cardNumber1.className += addCard.shape
-    gridSpace0.appendChild(cardNumber1)
-  } else if (addCard.number === 'two') {
-    let cardNumber1 = document.createElement('div')
-    cardNumber1.className += 'blankShape '
-    cardNumber1.className += addCard.shape
-    gridSpace0.appendChild(cardNumber1)
-    let cardNumber2 = document.createElement('div')
-    cardNumber2.className += 'blankShape '
-    cardNumber2.className += addCard.shape
-    gridSpace0.appendChild(cardNumber2)
-  } else if (addCard.number === 'three') {
-    let cardNumber1 = document.createElement('div')
-    cardNumber1.className += 'blankShape '
-    cardNumber1.className += addCard.shape
-    gridSpace0.appendChild(cardNumber1)
-    let cardNumber2 = document.createElement('div')
-    cardNumber2.className += 'blankShape '
-    cardNumber2.className += addCard.shape
-    gridSpace0.appendChild(cardNumber2)
-    let cardNumber3 = document.createElement('div')
-    cardNumber3.className += 'blankShape '
-    cardNumber3.className += addCard.shape
-    gridSpace0.appendChild(cardNumber3)
+  const gridSpace = [
+    gridSpace0,
+    gridSpace1,
+    gridSpace2,
+    gridSpace3,
+    gridSpace4,
+    gridSpace5,
+    gridSpace6,
+    gridSpace7,
+    gridSpace8,
+    gridSpace9,
+    gridSpace10,
+    gridSpace11
+  ]
+
+  console.log(gridSpace[3])
+  for (let i = 0; i < 12; i++) {
+    if (addCard.number === 'one') {
+      let cardNumber1 = document.createElement('div')
+      cardNumber1.className += 'blankShape '
+      cardNumber1.className += addCard.shape + ' '
+      cardNumber1.className += addCard.shade
+      cardNumber1.className += addCard.color
+      gridSpace[i].appendChild(CardNumber1)
+    } else if (addCard.number === 'two') {
+      let cardNumber1 = document.createElement('div')
+      cardNumber1.className += 'blankShape '
+      cardNumber1.className += addCard.shape + ' '
+      cardNumber1.className += addCard.shade
+      cardNumber1.className += addCard.color
+      gridSpace[i].appendChild(cardNumber1)
+      let cardNumber2 = document.createElement('div')
+      cardNumber2.className += 'blankShape '
+      cardNumber2.className += addCard.shape + ' '
+      cardNumber2.className += addCard.shade
+      cardNumber2.className += addCard.color
+      gridSpace[i].appendChild(cardNumber2)
+    } else {
+      let cardNumber1 = document.createElement('div')
+      cardNumber1.className += 'blankShape '
+      cardNumber1.className += addCard.shape + ' '
+      cardNumber1.className += addCard.shade
+      cardNumber1.className += addCard.color
+      gridSpace[i].appendChild(cardNumber1)
+      let cardNumber2 = document.createElement('div')
+      cardNumber2.className += 'blankShape '
+      cardNumber2.className += addCard.shape + ' '
+      cardNumber2.className += addCard.shade
+      cardNumber2.className += addCard.color
+      gridSpace[i].appendChild(cardNumber2)
+      let cardNumber3 = document.createElement('div')
+      cardNumber3.className += 'blankShape '
+      cardNumber3.className += addCard.shape + ' '
+      cardNumber3.className += addCard.shade
+      cardNumber3.className += addCard.color
+      gridSpace[i].appendChild(cardNumber3)
+    }
   }
 }
 
