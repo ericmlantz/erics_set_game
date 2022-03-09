@@ -6,6 +6,7 @@ shading = ['solid', 'striped', 'outline']
 
 //GLOBAL DOM VARIABLES
 
+//NOT CURRENTLY USING. CAN DELETE IF NOT USED BY END OF CREATION.
 //Grid Spaces Variables
 // let gridSpace0 = document.getElementById('c0')
 // let gridSpace1 = document.getElementById('c1')
@@ -19,14 +20,16 @@ shading = ['solid', 'striped', 'outline']
 // let gridSpace9 = document.getElementById('c9')
 // let gridSpace10 = document.getElementById('c10')
 // let gridSpace11 = document.getElementById('c11')
+let checkSetJS = document.querySelector('.checkSet')
 let reShuffleDeck = document.querySelector('.reShuffle')
 let getCardJS = document.querySelector('.getCard')
-//Game Grid Variable
 let gameGridJS = document.querySelector('.gameGrid')
-
-//Deck Variables
-let deck = []
+let setFound = document.querySelector('.set')
 //----------------------------
+
+//GLOBAL ARRAYS
+let deck = []
+//--------------------
 
 //Player Class
 class Player {
@@ -49,11 +52,6 @@ class Card {
 }
 //----------------------------
 
-//PlayerCreation
-// for (let numPlayers = 0; numPlayers < 3; numPlayers++) {
-//   let player = new Player()
-// }
-//----------------------------
 //Deck Array that uses a for loop to cycle through and create a deck of 81 unique cards and turns them into new card objects.
 for (let shapesIndex = 0; shapesIndex < shapes.length; shapesIndex++) {
   for (let colorsIndex = 0; colorsIndex < colors.length; colorsIndex++) {
@@ -75,22 +73,6 @@ for (let shapesIndex = 0; shapesIndex < shapes.length; shapesIndex++) {
   }
 }
 console.log(deck)
-//----------------------------
-
-// Test of creation of a shape inside one of the grid cards with added properties for that specific card's shapes
-// let cardProperty = document.createElement('div')
-// gridSpace1.appendChild(cardProperty)
-// cardProperty.className = 'blankShape greenStriped semiCircle'
-// let cardPropertyTwo = document.createElement('div')
-// gridSpace1.appendChild(cardPropertyTwo)
-// cardPropertyTwo.className = 'blankShape blueStriped square'
-// let cardPropertyThree = document.createElement('div')
-// gridSpace1.appendChild(cardPropertyThree)
-// cardPropertyThree.className = 'blankShape purpleStriped circle'
-//----------------------------
-
-// Attempt at making number of elements change on a grid item's card
-
 //----------------------------
 
 //Shuffle Function that mixes up the cards
@@ -115,7 +97,7 @@ function addCardToGrid() {
 }
 //----------------------------
 
-//Grid Space Arrayg
+//GridSpace Array
 gridSpace = []
 for (let i = 0; i < 12; i++) {
   gridSpace.push(document.getElementById(`c${i}`))
@@ -123,6 +105,8 @@ for (let i = 0; i < 12; i++) {
   addProperties(i, topCard)
 }
 console.log(gridSpace)
+console.log(deck)
+
 //Set the properties of a newly gotten card to a space on the grid
 function addProperties(location, topCard) {
   if (topCard.number === 'one') {
@@ -167,16 +151,39 @@ function addProperties(location, topCard) {
   }
 }
 
+//Compare Cards to One Another To See if Set Found for Use in selectCard() Function
+function checkForSet() {
+  checkSetJS.style.display = 'flex'
+}
+
+//Empty Array for selection when user is choosing SET
+let currentChoice = []
+//Click GridSpaces Event Listener Callback Function
+function selectCard(e) {
+  if (currentChoice.length < 3) {
+    let choice = e.currentTarget
+    currentChoice.push(choice)
+    console.log(currentChoice)
+  }
+  if (currentChoice.length === 3) {
+    checkForSet()
+  }
+}
+
 //EVENT LISTENERS
+
+//Doesn't work yet
 reShuffleDeck.addEventListener('click', shuffleDeck)
-getCardJS.addEventListener('click', addCardToGrid)
-/* Game Process
-1. Have players insert names
-2. startGame Function run when start game BUTTON is pressed. 
-3. New player objects created with names and wonCounts of 0 to start.
-4.Create each card
-5. Create deck object holding every card
-6. Shuffle cards using ShuffleDeck function.
-8. Switch the page to the gameGrid page.
-7. Add 12 new cards to the gameGrid
-*/
+
+//Event Listener for loop for all gridSpace Locations
+//Click GridSpaces
+for (let i = 0; i < 12; i++) {
+  gridSpace[i].addEventListener('click', selectCard)
+}
+
+//Event Listener for Check Selected Cards for Set
+//Click Check Button
+
+//Event Listener for Set Found
+//Click Set Button
+// setFound.addEventListener('click', selectSet)
