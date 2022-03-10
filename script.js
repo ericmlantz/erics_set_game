@@ -88,10 +88,23 @@ function newGrid() {
   }
 }
 newGrid()
+console.log(gridSpace)
+
+//Make new grid of cards if Reshuffle Button clicked
+function noSetsReshuffle() {
+  for (let i = 0; i < 12; i++) {
+    deck.append(...gridSpace)
+  }
+  for (let i = 0; i < 12; i++) {
+    gridSpace[i].innerHTML = ''
+  }
+  newGrid()
+  console.log(gridSpace)
+  console.log(deck)
+}
 
 //Set the properties of a newly gotten card to a space on the grid
 function addProperties(location, topCard) {
-  console.log(location)
   if (topCard.number === 'one') {
     let cardNumber1 = document.createElement('div')
     cardNumber1.className += 'blankShape '
@@ -144,12 +157,10 @@ function addThreeNew() {
     gridSpace.push(document.getElementById(currentChoice[0]))
     topCard1 = addCardToGrid()
     addProperties(currentChoice[0].id[2], topCard1)
-    console.log(deck)
   } else {
     gridSpace.push(document.getElementById(currentChoice[0]))
     topCard1 = addCardToGrid()
     addProperties(currentChoice[0].id[1] + currentChoice[0].id[2], topCard1)
-    console.log(deck)
   }
 
   if (currentChoice[1].id[1] === '0') {
@@ -171,9 +182,9 @@ function addThreeNew() {
     topCard3 = addCardToGrid()
     addProperties(currentChoice[2].id[1] + currentChoice[2].id[2], topCard3)
   }
-  console.log(deck)
   resetFoundSet()
 }
+console.log(deck)
 
 //Set Verification - ALL Must be TURNED true for a set to occur
 let numberVerified = false
@@ -221,10 +232,10 @@ function checkForSet() {
       currentChoice[0].childNodes[0].classList[1] !==
         currentChoice[2].childNodes[0].classList[1])
   ) {
-    console.log('shapeVerified will be set to True')
+    //console.log('shapeVerified will be set to True')
     shapeVerified = true
   } else {
-    console.log('shapeVerify = False!')
+    //console.log('shapeVerify = False!')
   }
   //Number Verify
   if (
@@ -238,10 +249,10 @@ function checkForSet() {
         currentChoice[2].childElementCount &&
       currentChoice[0].childElementCount !== currentChoice[2].childElementCount)
   ) {
-    console.log('numberVerify will be set to True')
+    //console.log('numberVerify will be set to True')
     numberVerified = true
   } else {
-    console.log('numberVerify = False!')
+    //console.log('numberVerify = False!')
   }
   //Color Verify
   if (
@@ -256,10 +267,10 @@ function checkForSet() {
       window.getComputedStyle(currentChoice[0].childNodes[0]).borderColor !==
         window.getComputedStyle(currentChoice[2].childNodes[0]).borderColor)
   ) {
-    console.log('colorVerify will be set to True')
+    //console.log('colorVerify will be set to True')
     colorVerified = true
   } else {
-    console.log('colorVerify = False!')
+    //console.log('colorVerify = False!')
   }
   //Shade Verify
   if (
@@ -274,10 +285,10 @@ function checkForSet() {
       window.getComputedStyle(currentChoice[0].childNodes[0]).background !==
         window.getComputedStyle(currentChoice[2].childNodes[0]).background)
   ) {
-    console.log('shadeVerify will be set to True')
+    //console.log('shadeVerify will be set to True')
     shadeVerified = true
   } else {
-    console.log('shadeVerify = False!')
+    //console.log('shadeVerify = False!')
   }
 }
 
@@ -295,7 +306,6 @@ function selectCard(e) {
     } else {
       choice.classList.add('selected')
       currentChoice.push(choice)
-      console.log(currentChoice)
     }
   }
   if (currentChoice.length === 3) {
@@ -306,12 +316,10 @@ function selectCard(e) {
 //EVENT LISTENERS
 
 //Doesn't work yet
-reShuffleDeck.addEventListener('click', newGrid)
+reShuffleDeck.addEventListener('click', noSetsReshuffle)
 
 //Event Listener for loop for all gridSpace Locations
 //Click GridSpaces
 for (let i = 0; i < 12; i++) {
   gridSpace[i].addEventListener('click', selectCard)
 }
-//Event Listener for Check Selected Cards for Set
-//Click Check Button
