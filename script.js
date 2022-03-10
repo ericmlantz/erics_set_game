@@ -99,16 +99,23 @@ function addCardToGrid() {
 
 //GridSpace Array
 gridSpace = []
-for (let i = 0; i < 12; i++) {
-  gridSpace.push(document.getElementById(`c${i}`))
-  const topCard = addCardToGrid()
-  addProperties(i, topCard)
+let topCard = 0
+function newGrid() {
+  for (let i = 0; i < 12; i++) {
+    if (i < 10) {
+      gridSpace.push(document.getElementById(`c0${i}`))
+    } else {
+      gridSpace.push(document.getElementById(`c${i}`))
+    }
+    topCard = addCardToGrid()
+    addProperties(i, topCard)
+  }
 }
-console.log(gridSpace)
-console.log(deck)
+newGrid()
 
 //Set the properties of a newly gotten card to a space on the grid
 function addProperties(location, topCard) {
+  console.log(location)
   if (topCard.number === 'one') {
     let cardNumber1 = document.createElement('div')
     cardNumber1.className += 'blankShape '
@@ -151,6 +158,47 @@ function addProperties(location, topCard) {
   }
 }
 
+//After Correct Set, Add 3 New Cards and Remove Old Ones
+function addThreeNew() {
+  currentChoice[0].innerHTML = ''
+  currentChoice[1].innerHTML = ''
+  currentChoice[2].innerHTML = ''
+
+  if (currentChoice[0].id[1] === '0') {
+    gridSpace.push(document.getElementById(currentChoice[0]))
+    topCard1 = addCardToGrid()
+    addProperties(currentChoice[0].id[2], topCard1)
+    console.log(deck)
+  } else {
+    gridSpace.push(document.getElementById(currentChoice[0]))
+    topCard1 = addCardToGrid()
+    addProperties(currentChoice[0].id[1] + currentChoice[0].id[2], topCard1)
+    console.log(deck)
+  }
+
+  if (currentChoice[1].id[1] === '0') {
+    gridSpace.push(document.getElementById(currentChoice[1]))
+    topCard2 = addCardToGrid()
+    addProperties(currentChoice[1].id[2], topCard2)
+  } else {
+    gridSpace.push(document.getElementById(currentChoice[1]))
+    topCard2 = addCardToGrid()
+    addProperties(currentChoice[1].id[1] + currentChoice[1].id[2], topCard2)
+  }
+
+  if (currentChoice[2].id[1] === '0') {
+    gridSpace.push(document.getElementById(currentChoice[2]))
+    topCard3 = addCardToGrid()
+    addProperties(currentChoice[2].id[2], topCard3)
+  } else {
+    gridSpace.push(document.getElementById(currentChoice[2]))
+    topCard3 = addCardToGrid()
+    addProperties(currentChoice[2].id[1] + currentChoice[2].id[2], topCard3)
+  }
+  console.log(deck)
+  resetFoundSet()
+}
+
 //Set Verification - ALL Must be TURNED true for a set to occur
 let numberVerified = false
 let shapeVerified = false
@@ -159,13 +207,8 @@ let colorVerified = false
 
 function activateComparison() {
   checkForSet()
-  if (
-    numberVerified === true &&
-    shapeVerified === true &&
-    shadeVerified === true &&
-    colorVerified === true
-  ) {
-    resetFoundSet()
+  if (numberVerified && shapeVerified && shadeVerified && colorVerified) {
+    addThreeNew()
     inAppUpdate.innerText = 'You got a SET!'
   } else {
     resetFoundSet()
@@ -282,7 +325,7 @@ function selectCard(e) {
 //EVENT LISTENERS
 
 //Doesn't work yet
-reShuffleDeck.addEventListener('click', shuffleDeck)
+reShuffleDeck.addEventListener('click', newGrid)
 
 //Event Listener for loop for all gridSpace Locations
 //Click GridSpaces
