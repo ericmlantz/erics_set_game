@@ -3,22 +3,7 @@ shapes = ['square', 'circle', 'semiCircle']
 colors = ['Green', 'Blue', 'Purple']
 numbers = ['one', 'two', 'three']
 shading = ['solid', 'striped', 'outline']
-
-//NOT CURRENTLY USING. CAN DELETE IF NOT USED BY END OF CREATION.
-
-//Grid Spaces Variables
-// let gridSpace0 = document.getElementById('c0')
-// let gridSpace1 = document.getElementById('c1')
-// let gridSpace2 = document.getElementById('c2')
-// let gridSpace3 = document.getElementById('c3')
-// let gridSpace4 = document.getElementById('c4')
-// let gridSpace5 = document.getElementById('c5')
-// let gridSpace6 = document.getElementById('c6')
-// let gridSpace7 = document.getElementById('c7')
-// let gridSpace8 = document.getElementById('c8')
-// let gridSpace9 = document.getElementById('c9')
-// let gridSpace10 = document.getElementById('c10')
-// let gridSpace11 = document.getElementById('c11')
+//----------------------------
 
 //GLOBAL DOM VARIABLES
 let checkSetJS = document.querySelector('.checkSet')
@@ -27,18 +12,9 @@ let getCardJS = document.querySelector('.getCard')
 let gameGridJS = document.querySelector('.gameGrid')
 let inAppUpdate = document.querySelector('.inAppUpdate')
 //----------------------------
+
 //GLOBAL ARRAYS
 let deck = []
-//--------------------
-
-//Player Class
-class Player {
-  constructor(nameOfPlayer, winCount, keyBinded) {
-    this.name = nameOfPlayer
-    this.winCount = winCount
-    this.keyBinded = keyBinded
-  }
-}
 //----------------------------
 
 //Card Class that has the blueprint for what each card must have: shape, color, number, and shading
@@ -217,9 +193,9 @@ function activateComparison() {
 }
 
 function resetFoundSet() {
-  currentChoice[0].style.borderColor = 'black'
-  currentChoice[1].style.borderColor = 'black'
-  currentChoice[2].style.borderColor = 'black'
+  currentChoice[0].classList.remove('selected')
+  currentChoice[1].classList.remove('selected')
+  currentChoice[2].classList.remove('selected')
   numberVerified = false
   shapeVerified = false
   shadeVerified = false
@@ -310,18 +286,23 @@ let currentChoice = []
 //Click GridSpaces Event Listener Callback Function
 function selectCard(e) {
   inAppUpdate.innerText = ''
-  if (currentChoice.length < 3) {
+  if (currentChoice.length < 4) {
     let choice = e.currentTarget
-    choice.style.borderColor = 'yellow'
-    currentChoice.push(choice)
-    console.log(currentChoice)
+    if (currentChoice.includes(choice)) {
+      choice.classList.remove('selected')
+      let index = currentChoice.indexOf(choice)
+      currentChoice.splice(index, 1)
+    } else {
+      choice.classList.add('selected')
+      currentChoice.push(choice)
+      console.log(currentChoice)
+    }
   }
   if (currentChoice.length === 3) {
     checkSetJS.style.display = 'flex'
     checkSetJS.addEventListener('click', activateComparison)
   }
 }
-
 //EVENT LISTENERS
 
 //Doesn't work yet

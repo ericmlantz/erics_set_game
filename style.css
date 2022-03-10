@@ -24,6 +24,7 @@ body {
   height: 100px;
   border: black solid 1px;
   border-radius: 8px;
+  box-sizing: border-box;
 }
 
 /*Inner Shape Default Style */
@@ -109,7 +110,9 @@ body {
 
 /* Selected Card Change */
 .selected {
-  border-style:dashed;
+  border-style:inset;
+  border-width: 5px;
+  border-color: rgb(125, 125, 125)
 }
 /* Game Play Buttons */
 .reShuffle {
@@ -124,8 +127,14 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 10px;
+  margin: 30px 0px;
+  border-width: 4px;
+  border-radius: 10px;
+  background: white;
+  padding: 10px 40px 10px 40px;
 }
+
+/* Game Play Text */
 .inAppInstructions {
   text-align: center;
   margin-bottom: 0;
