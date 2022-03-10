@@ -25,9 +25,8 @@ let checkSetJS = document.querySelector('.checkSet')
 let reShuffleDeck = document.querySelector('.reShuffle')
 let getCardJS = document.querySelector('.getCard')
 let gameGridJS = document.querySelector('.gameGrid')
-let setFound = document.querySelector('.set')
+let inAppUpdate = document.querySelector('.inAppUpdate')
 //----------------------------
-
 //GLOBAL ARRAYS
 let deck = []
 //--------------------
@@ -152,7 +151,8 @@ function addProperties(location, topCard) {
   }
 }
 
-let numbersVerified = false
+//Set Verification - ALL Must be TURNED true for a set to occur
+let numberVerified = false
 let shapeVerified = false
 let shadeVerified = false
 let colorVerified = false
@@ -160,30 +160,36 @@ let colorVerified = false
 function activateComparison() {
   checkForSet()
   if (
-    numbersVerified === true &&
-    (shapeVerified === true) & (shadeVerified === true) &&
+    numberVerified === true &&
+    shapeVerified === true &&
+    shadeVerified === true &&
     colorVerified === true
   ) {
-    console.log('You got a SET!')
+    resetFoundSet()
+    inAppUpdate.innerText = 'You got a SET!'
+  } else {
+    resetFoundSet()
+    inAppUpdate.innerText = 'That is not a SET, Try Again!'
   }
-  //resetFoundSet()
 }
 
-//Not worked on yet
 function resetFoundSet() {
+  currentChoice[0].style.borderColor = 'black'
+  currentChoice[1].style.borderColor = 'black'
+  currentChoice[2].style.borderColor = 'black'
+  numberVerified = false
+  shapeVerified = false
+  shadeVerified = false
+  colorVerified = false
   checkSetJS.style.display = 'none'
   checkSetJS.removeEventListener('click', activateComparison)
   currentChoice = []
+  inAppUpdate.innerText = ''
 }
 
 //Compare Cards to One Another To See if Set Found for Use in selectCard() Function
 function checkForSet() {
-  // let c1 = currentChoice[0].childNodes[0].classList[1]
-  // console.log(c1.number)
-  // let c2 = currentChoice[1].childNodes[0].classList[1]
-  // console.log(c2.number)
-  // let c3 = currentChoice[2].childNodes[0].classList[1]
-  // console.log(c3.number)
+  //Shape verify
   if (
     (currentChoice[0].childNodes[0].classList[1] ===
       currentChoice[1].childNodes[0].classList[1] &&
@@ -193,31 +199,83 @@ function checkForSet() {
       currentChoice[1].childNodes[0].classList[1] &&
       currentChoice[1].childNodes[0].classList[1] !==
         currentChoice[2].childNodes[0].classList[1] &&
-      currentChoice[1].childNodes[0].classList[1] !==
+      currentChoice[0].childNodes[0].classList[1] !==
         currentChoice[2].childNodes[0].classList[1])
   ) {
-    if ()
-    console.log('NumberVerify will be set to True')
-    numbersVerified = true
+    console.log('shapeVerified will be set to True')
+    shapeVerified = true
   } else {
-    console.log('Not not in a set, sorry!')
+    console.log('shapeVerify = False!')
   }
-  resetFoundSet()
+  //Number Verify
+  if (
+    (currentChoice[0].childElementCount ===
+      currentChoice[1].childElementCount &&
+      currentChoice[1].childElementCount ===
+        currentChoice[2].childElementCount) ||
+    (currentChoice[0].childElementCount !==
+      currentChoice[1].childElementCount &&
+      currentChoice[1].childElementCount !==
+        currentChoice[2].childElementCount &&
+      currentChoice[0].childElementCount !== currentChoice[2].childElementCount)
+  ) {
+    console.log('numberVerify will be set to True')
+    numberVerified = true
+  } else {
+    console.log('numberVerify = False!')
+  }
+  //Color Verify
+  if (
+    (window.getComputedStyle(currentChoice[0].childNodes[0]).borderColor ===
+      window.getComputedStyle(currentChoice[1].childNodes[0]).borderColor &&
+      window.getComputedStyle(currentChoice[1].childNodes[0]).borderColor ===
+        window.getComputedStyle(currentChoice[2].childNodes[0]).borderColor) ||
+    (window.getComputedStyle(currentChoice[0].childNodes[0]).borderColor !==
+      window.getComputedStyle(currentChoice[1].childNodes[0]).borderColor &&
+      window.getComputedStyle(currentChoice[1].childNodes[0]).borderColor !==
+        window.getComputedStyle(currentChoice[2].childNodes[0]).borderColor &&
+      window.getComputedStyle(currentChoice[0].childNodes[0]).borderColor !==
+        window.getComputedStyle(currentChoice[2].childNodes[0]).borderColor)
+  ) {
+    console.log('colorVerify will be set to True')
+    colorVerified = true
+  } else {
+    console.log('colorVerify = False!')
+  }
+  //Shade Verify
+  if (
+    (window.getComputedStyle(currentChoice[0].childNodes[0]).background ===
+      window.getComputedStyle(currentChoice[1].childNodes[0]).background &&
+      window.getComputedStyle(currentChoice[1].childNodes[0]).background ===
+        window.getComputedStyle(currentChoice[2].childNodes[0]).background) ||
+    (window.getComputedStyle(currentChoice[0].childNodes[0]).background !==
+      window.getComputedStyle(currentChoice[1].childNodes[0]).background &&
+      window.getComputedStyle(currentChoice[1].childNodes[0]).background !==
+        window.getComputedStyle(currentChoice[2].childNodes[0]).background &&
+      window.getComputedStyle(currentChoice[0].childNodes[0]).background !==
+        window.getComputedStyle(currentChoice[2].childNodes[0]).background)
+  ) {
+    console.log('shadeVerify will be set to True')
+    shadeVerified = true
+  } else {
+    console.log('shadeVerify = False!')
+  }
 }
 
 //Empty Array for selection when user is choosing SET
 let currentChoice = []
 //Click GridSpaces Event Listener Callback Function
 function selectCard(e) {
+  inAppUpdate.innerText = ''
   if (currentChoice.length < 3) {
     let choice = e.currentTarget
+    choice.style.borderColor = 'yellow'
     currentChoice.push(choice)
     console.log(currentChoice)
   }
   if (currentChoice.length === 3) {
     checkSetJS.style.display = 'flex'
-    checkForSet()
-    // checkSetJS.addEventListener('click', checkForSet)
+    checkSetJS.addEventListener('click', activateComparison)
   }
 }
 
@@ -233,7 +291,3 @@ for (let i = 0; i < 12; i++) {
 }
 //Event Listener for Check Selected Cards for Set
 //Click Check Button
-
-//Event Listener for Set Found
-//Click Set Button
-// setFound.addEventListener('click', selectSet)

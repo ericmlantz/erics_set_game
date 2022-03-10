@@ -1,3 +1,8 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 /* Container for the 12 cards game grid */
 .gameGrid {
   display: grid;
@@ -5,6 +10,9 @@
   grid-template-rows: 1fr 1fr 1fr;
   row-gap: 15px;
   column-gap: 15px;
+
+  width: 845px;
+  margin-top: 50px;
 }
 
 /* Individual cards style */
@@ -36,56 +44,54 @@
 .stripedBlue {
   background:repeating-linear-gradient(
     to right,
-    #039BE5 2px,
-    #039BE5 4px,
+    rgb(3, 155, 229) 2px,
+    rgb(3, 155, 229) 4px,
     #ffffff 4px,
     #ffffff 7px);
-    border-color: #039BE5;
+    border-color: rgb(3, 155, 229);
 }
-
 .stripedGreen {
   background:repeating-linear-gradient(
     to right,
-    #5ad725 2px,
-    #5ad725 4px,
+    rgb(90, 215, 37) 2px,
+    rgb(90, 215, 37) 4px,
     #ffffff 4px,
     #ffffff 7px);
-    border-color: #5ad725;
+    border-color: rgb(90, 215, 37);
 }
-
 .stripedPurple {
   background:repeating-linear-gradient(
     to right,
-    #8c37ed 2px,
-    #8c37ed 4px,
+    rgb(140, 55, 237) 2px,
+    rgb(140, 55, 237) 4px,
     #ffffff 4px,
     #ffffff 7px);
-    border-color: #8c37ed;
+    border-color: rgb(140, 55, 237);
 }
 
 /* Solid Property of Shading */
 .solidBlue {
-  background:#039BE5;
-  border-color: #039BE5;
+  background:rgb(3, 155, 229);
+  border-color: rgb(3, 155, 229);
 }
 .solidGreen {
   background:#5ad725;
-  border-color: #5ad725;
+  border-color: rgb(90, 215, 37);
 }
 .solidPurple {
-  background:#8c37ed;
-  border-color: #8c37ed;
+  background:rgb(140, 55, 237);
+  border-color: rgb(140, 55, 237);
 }
 
 /* Outline Property of Shading */
 .outlineBlue {
-  border-color: #039BE5;
+  border-color: rgb(3, 155, 229);
 }
 .outlineGreen {
-  border-color: #5ad725;
+  border-color: rgb(90, 215, 37);
 }
 .outlinePurple {
-  border-color: #8c37ed;
+  border-color: rgb(140, 55, 237);
 }
 /* -------------------- */
 
@@ -93,16 +99,18 @@
 .circle {
   border-radius: 50px;
 }
-
 .square {
   border-radius: 0px;
 }
-
 .semiCircle {
   border-radius: 10rem 10rem 0 0;
 }
 /* -------------------- */
 
+/* Selected Card Change */
+.selected {
+  border-style:dashed;
+}
 /* Game Play Buttons */
 .reShuffle {
   display: flex;
@@ -111,20 +119,22 @@
   flex-direction: column;
   margin: 10px;
 }
-
-.set {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 10px;
-}
-
 .checkSet {
   display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: 10px;
+}
+.inAppInstructions {
+  text-align: center;
+  margin-bottom: 0;
+}
+.inAppUpdates {
+  text-align: center;
+}
+.shuffleRules {
+  margin-bottom: 0;
+  margin-top: 4px;
 }
 /* -------------------- */
