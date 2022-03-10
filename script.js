@@ -65,10 +65,11 @@ function shuffleDeck(deck) {
 }
 shuffleDeck(deck)
 //----------------------------
-
+alteredDeck = []
 //Function to get 'top' card in the deck
 function addCardToGrid() {
   addCard = deck.shift()
+  alteredDeck.push(addCard)
   return addCard
 }
 //----------------------------
@@ -88,18 +89,15 @@ function newGrid() {
   }
 }
 newGrid()
-console.log(gridSpace)
+console.log(deck)
 
 //Make new grid of cards if Reshuffle Button clicked
 function noSetsReshuffle() {
   for (let i = 0; i < 12; i++) {
-    deck.append(...gridSpace)
-  }
-  for (let i = 0; i < 12; i++) {
     gridSpace[i].innerHTML = ''
   }
   newGrid()
-  console.log(gridSpace)
+  console.log('Reshuffled Deck')
   console.log(deck)
 }
 
@@ -149,6 +147,7 @@ function addProperties(location, topCard) {
 
 //After Correct Set, Add 3 New Cards and Remove Old Ones
 function addThreeNew() {
+  deck.indexOf(currentChoice[0])
   currentChoice[0].innerHTML = ''
   currentChoice[1].innerHTML = ''
   currentChoice[2].innerHTML = ''
@@ -183,8 +182,8 @@ function addThreeNew() {
     addProperties(currentChoice[2].id[1] + currentChoice[2].id[2], topCard3)
   }
   resetFoundSet()
+  console.log(deck)
 }
-console.log(deck)
 
 //Set Verification - ALL Must be TURNED true for a set to occur
 let numberVerified = false
@@ -195,6 +194,7 @@ let colorVerified = false
 function activateComparison() {
   checkForSet()
   if (numberVerified && shapeVerified && shadeVerified && colorVerified) {
+    console.log(currentChoice)
     addThreeNew()
     inAppUpdate.innerText = 'You got a SET!'
   } else {
@@ -297,7 +297,7 @@ let currentChoice = []
 //Click GridSpaces Event Listener Callback Function
 function selectCard(e) {
   inAppUpdate.innerText = ''
-  if (currentChoice.length < 4) {
+  if (currentChoice.length < 3) {
     let choice = e.currentTarget
     if (currentChoice.includes(choice)) {
       choice.classList.remove('selected')
