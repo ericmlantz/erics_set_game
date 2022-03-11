@@ -1,5 +1,6 @@
-# Eric's Set Game
+# Ready...SET!
 ### By: Eric Lantz
+[LinkedIn](https://www.linkedin.com/in/eric-lantz/) |  [GitHub](https://github.com/ericmlantz)
 ***
 
 ### **Table of Contents**
@@ -36,20 +37,18 @@ The project itself was deployed and can be viewed [here.](https://readyset.surge
 <a id="screenshots"></a>
 
 #### **GAME IN ACTION:**
-![image](./Screen%20Shot%202022-03-11%20at%2011.43.16%20AM.png)
-#### **Game Grid**
+![image](Screen%20Shot%202022-03-11%20at%2011.43.16%20AM.png)
 
 ***
 <a id="updates"></a>
 ### ***Future Updates***
-- [ ] Design code features using Javascript
-- [ ] Design game page using HTML
-- [ ] Style code using CSS 
-- [x] ~~Create Trello Board for project~~
-- [x] 
+- [ ] Allow for custom shapes and colors
+- [ ] Create multiplayer mode
+- [x] Allow player to reshuffle if no SETs found
 
 ***
 
 ### ***Credits***
 <a id="credits"></a>
 * [SET Instructions](https://www.ultraboardgames.com/set/game-rules.php)
+* [Fisher-Yates Shuffle](https://www.frankmitchell.org/2015/01/fisher-yates/)
