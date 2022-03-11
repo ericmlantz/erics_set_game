@@ -1,2 +1,0 @@
-Possible Way to get reshuffle to work: 
-  - Get a list of all cards in grid after each set is attempted. If someone presses reshuffle, "push" the array of current cards in the grid back into the deck object. 

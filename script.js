@@ -3,7 +3,6 @@ shapes = ['square', 'circle', 'semiCircle']
 colors = ['Green', 'Blue', 'Purple']
 numbers = ['one', 'two', 'three']
 shading = ['solid', 'striped', 'outline']
-//----------------------------
 
 //GLOBAL DOM VARIABLES
 let checkSetJS = document.querySelector('.checkSet')
@@ -16,11 +15,9 @@ let fullBoard = document.querySelector('.section1')
 let endGameInfoJS = document.querySelector('.endGameText')
 let endGameTitle = document.querySelector('.endGameTitle')
 let endGameTitle2 = document.querySelector('.endGameTitle2')
-//----------------------------
 
 //GLOBAL ARRAYS
 let deck = []
-//----------------------------
 
 //Card Class that has the blueprint for what each card must have: shape, color, number, and shading
 class Card {
@@ -31,7 +28,6 @@ class Card {
     this.shade = shade
   }
 }
-//----------------------------
 
 //Deck Array that uses a for loop to cycle through and create a deck of 81 unique cards and turns them into new card objects.
 for (let shapesIndex = 0; shapesIndex < shapes.length; shapesIndex++) {
@@ -53,8 +49,6 @@ for (let shapesIndex = 0; shapesIndex < shapes.length; shapesIndex++) {
     }
   }
 }
-console.log(deck)
-//----------------------------
 
 //Shuffle Function that mixes up the cards
 function shuffleDeck(deck) {
@@ -69,18 +63,17 @@ function shuffleDeck(deck) {
   }
 }
 shuffleDeck(deck)
-//----------------------------
 
 //Function to get 'top' card in the deck
 function addCardToGrid() {
   addCard = deck.shift()
   return addCard
 }
-//----------------------------
 
-//GridSpace Array
+//Empty GridSpace Array
 gridSpace = []
 let topCard = 0
+//Function to Get New 12 Card Board
 function newGrid() {
   for (let i = 0; i < 12; i++) {
     if (i < 10) {
@@ -107,7 +100,6 @@ function noSetsReshuffle() {
       gridSpace[i].innerHTML = ''
     }
     newGrid()
-    console.log(deck)
   }
 }
 
@@ -203,10 +195,8 @@ function addThreeNew() {
       addProperties(currentChoice[2].id[1] + currentChoice[2].id[2], topCard3)
     }
     resetFoundSet()
-    console.log(deck)
   }
 }
-//----------------------------
 
 //Sets Score Count Global Variable
 let numOfSets = 0
@@ -228,9 +218,8 @@ function activateComparison() {
     inAppUpdate.innerText = 'That is not a SET, Try Again!'
   }
 }
-//----------------------------
 
-//Reset The Selected Set Board To Empty
+//Reset The Selected Set Parts To Empty
 function resetFoundSet() {
   currentChoice[0].classList.remove('selected')
   currentChoice[1].classList.remove('selected')
@@ -244,7 +233,6 @@ function resetFoundSet() {
   currentChoice = []
   inAppUpdate.innerText = ''
 }
-//----------------------------
 
 //Compare Cards to One Another To See if Set Found for Use in selectCard() Function
 function checkForSet() {
@@ -261,10 +249,8 @@ function checkForSet() {
       currentChoice[0].childNodes[0].classList[1] !==
         currentChoice[2].childNodes[0].classList[1])
   ) {
-    //console.log('shapeVerified will be set to True')
     shapeVerified = true
   } else {
-    //console.log('shapeVerify = False!')
   }
   //Number Verify
   if (
@@ -278,10 +264,8 @@ function checkForSet() {
         currentChoice[2].childElementCount &&
       currentChoice[0].childElementCount !== currentChoice[2].childElementCount)
   ) {
-    //console.log('numberVerify will be set to True')
     numberVerified = true
   } else {
-    //console.log('numberVerify = False!')
   }
   //Color Verify
   if (
@@ -296,10 +280,8 @@ function checkForSet() {
       window.getComputedStyle(currentChoice[0].childNodes[0]).borderColor !==
         window.getComputedStyle(currentChoice[2].childNodes[0]).borderColor)
   ) {
-    //console.log('colorVerify will be set to True')
     colorVerified = true
   } else {
-    //console.log('colorVerify = False!')
   }
   //Shade Verify
   if (
@@ -314,14 +296,12 @@ function checkForSet() {
       window.getComputedStyle(currentChoice[0].childNodes[0]).background !==
         window.getComputedStyle(currentChoice[2].childNodes[0]).background)
   ) {
-    //console.log('shadeVerify will be set to True')
     shadeVerified = true
   } else {
-    //console.log('shadeVerify = False!')
   }
 }
-//----------------------------
 
+//End of Game Button Event Callback Function
 function endGamePlay() {
   fullBoard.innerHTML = ''
   endGameInfoJS.style.display = 'flex'
@@ -329,6 +309,7 @@ function endGamePlay() {
   endGameTitle2.style.display = 'flex'
   endGameInfoJS.innerText = numOfSets
 }
+
 //Empty Array for selection when user is choosing SET
 let currentChoice = []
 //Click GridSpaces Event Listener Callback Function
@@ -350,17 +331,13 @@ function selectCard(e) {
     checkSetJS.addEventListener('click', activateComparison)
   }
 }
-//EVENT LISTENERS
 
+//EVENT LISTENERS
 //Reshuffle Deck Event Listender
 reShuffleDeck.addEventListener('click', noSetsReshuffle)
-//----------------------------
-
 //Select Cards Event Listener
 for (let i = 0; i < 12; i++) {
   gridSpace[i].addEventListener('click', selectCard)
 }
-//----------------------------
-
 //End Game Event Listener
 endGameJS.addEventListener('click', endGamePlay)

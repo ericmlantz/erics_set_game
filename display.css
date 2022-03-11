@@ -22,10 +22,9 @@ h2 {
 h3 {
   font-size: 28px;
   text-align: center;
-/*----------------------*/
+}
 
 /* Links */
-}
 .links {
   font-size: 40px;
     margin: 10px 0px;
@@ -53,21 +52,17 @@ a {
   margin: 0 0 20px 0;
   padding: 0;
 }
-/*----------------------*/
 
 /* Colors */
 .blue {
   color:rgb(3, 155, 229);
 }
-
 .green {
   color: rgb(90, 215, 37);
 }
-
 .purple {
   color: rgb(140, 55, 237);
 }
-/*----------------------*/
 
 /* Instructions Text */
 .objectInfo {
@@ -80,7 +75,6 @@ a {
   line-height: 1.4;
   font-size: 20px;
 }
-
 .objectGamePlay {
   display: block;
   line-height: 1.4;
