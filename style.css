@@ -161,16 +161,15 @@ body {
 /* Game Play Text */
 .inAppInstructions {
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 .inAppUpdate {
   text-align: center;
-  margin: 0 300px;
+  margin: 0 10%;
 }
 .shuffleRules {
   margin-bottom: 0;
   margin-top: 4px;
-  margin-bottom: 10px;
 }
 .endGameText {
   display: none;
@@ -189,5 +188,8 @@ body {
   display: none;
   margin: 0;
   font-size: 25px;
+}
+.red {
+  color: red;
 }
 /* -------------------- */
