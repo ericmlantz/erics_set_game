@@ -13,16 +13,14 @@
 
 ### ***Description***
 <a id="description"></a>
-Portfolio Project 1: The card game, SET, made using HTML, CSS, and Javascript.
+The card game, SET, made using HTML, CSS, and Javascript. Designed in one week during a Software Engineering Immsersive Course from General Assembly.
 
 ***
 <a id="technology"></a>
 ### ***Technologies Used***
 * Surge
 * Visual Studio Code
-* HTML
-* Javascript
-* CSS
+* Trello
 * GitHub
 
 ***
@@ -32,13 +30,13 @@ Portfolio Project 1: The card game, SET, made using HTML, CSS, and Javascript.
 
 A Trello board was used to keep track of development progress and can be viewed [here.](https://trello.com/b/ocnCp31B)
 
-The project itself was deployed and can be viewed [here.](surge.com)
+The project itself was deployed and can be viewed [here.](https://readyset.surge.sh/)
 ***
 ### ***Screenshots***
 <a id="screenshots"></a>
 
 #### **GAME IN ACTION:**
-![image](https://www.ultraboardgames.com/set/gfx/game1.jpg)
+![image](./Screen%20Shot%202022-03-11%20at%2011.43.16%20AM.png)
 #### **Game Grid**
 
 ***
@@ -48,7 +46,7 @@ The project itself was deployed and can be viewed [here.](surge.com)
 - [ ] Design game page using HTML
 - [ ] Style code using CSS 
 - [x] ~~Create Trello Board for project~~
-- [x] ~~Create Project README~~
+- [x] 
 
 ***
 
