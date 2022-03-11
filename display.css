@@ -1,6 +1,7 @@
 body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin: 0;
   padding: 0;
@@ -13,23 +14,25 @@ h1 {
   margin: 150px 0 0px 0;
 }
 
-button {
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.links {
+  font-size: 40px;
     margin: 10px 0px;
     border-width: 4px;
     border-radius: 10px;
     background: white;
-    padding: 10px 40px 10px 40px;
+    padding: 5px 10px;
+    border-style:inset;
+    border-width: 5px;
+    border-color: rgb(125, 125, 125)
 }
-button:hover {
+.links:hover {
   background-color: rgb(3, 155, 229);
   color: white;
   }
 
 a {
   color: black;
+  text-decoration: none;
 }
 
 .blue {
@@ -44,3 +47,38 @@ a {
   color: rgb(140, 55, 237);
 }
 
+h2 {
+  font-size: 50px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 28px;
+  text-align: center;
+}
+.objectInfo {
+  display: flex;
+  display: wrap;
+  width: 70%;
+  margin: auto;
+  line-height: 1.4;
+  font-size: 20px;
+}
+
+.objectGamePlay {
+  display: block;
+  line-height: 1.4;
+  font-size: 20px;
+  margin: 20px 100px;
+}
+.gamePlayWrapper {
+  margin: 0 50px;
+}
+.start {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 20px 0;
+    padding: 0;
+  }

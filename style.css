@@ -2,6 +2,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.section1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2px;
 }
 /* Container for the 12 cards game grid */
 .gameGrid {
@@ -12,7 +20,7 @@ body {
   column-gap: 15px;
 
   width: 845px;
-  margin-top: 50px;
+  margin: 10px 0px;
 }
 
 /* Individual cards style */
@@ -121,6 +129,22 @@ body {
   align-items: center;
   flex-direction: column;
   margin: 10px;
+  border-width: 4px;
+  border-radius: 10px;
+  background: white;
+  padding: 10px 40px 10px 40px;
+}
+.endGame {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  border-width: 4px;
+  border-radius: 10px;
+  background: rgb(90, 215, 37);
+  padding: 10px 40px 10px 40px;
+
 }
 .checkSet {
   display: none;
@@ -145,5 +169,24 @@ body {
 .shuffleRules {
   margin-bottom: 0;
   margin-top: 4px;
+  margin-bottom: 10px;
+}
+.endGameText {
+  display: none;
+  border:#000000 solid 5px;
+  padding: 20px 60px;
+  border-radius: 15px;
+  font-size: 20vh;
+  margin-bottom: 25px;
+}
+.endGameTitle {
+  display: none;
+  margin: 0 0 10px 0;
+  font-size: 40px;
+}
+.endGameTitle2 {
+  display: none;
+  margin: 0;
+  font-size: 25px;
 }
 /* -------------------- */

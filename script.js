@@ -11,6 +11,11 @@ let reShuffleDeck = document.querySelector('.reShuffle')
 let getCardJS = document.querySelector('.getCard')
 let gameGridJS = document.querySelector('.gameGrid')
 let inAppUpdate = document.querySelector('.inAppUpdate')
+let endGameJS = document.querySelector('.endGame')
+let fullBoard = document.querySelector('.section1')
+let endGameInfoJS = document.querySelector('.endGameText')
+let endGameTitle = document.querySelector('.endGameTitle')
+let endGameTitle2 = document.querySelector('.endGameTitle2')
 //----------------------------
 
 //GLOBAL ARRAYS
@@ -65,11 +70,10 @@ function shuffleDeck(deck) {
 }
 shuffleDeck(deck)
 //----------------------------
-alteredDeck = []
+
 //Function to get 'top' card in the deck
 function addCardToGrid() {
   addCard = deck.shift()
-  alteredDeck.push(addCard)
   return addCard
 }
 //----------------------------
@@ -89,16 +93,22 @@ function newGrid() {
   }
 }
 newGrid()
-console.log(deck)
 
 //Make new grid of cards if Reshuffle Button clicked
 function noSetsReshuffle() {
-  for (let i = 0; i < 12; i++) {
-    gridSpace[i].innerHTML = ''
+  if (deck.length < 12) {
+    reShuffleDeck.addEventListener('click', noSetsReshuffle)
+    inAppUpdate.innerText =
+      'You are at the end of the deck. You cannot request any more reshuffles, but you can continue to look for SETs from the cards on the board. Once you are unable to find any more SET, click the End button to view your score!'
+    reShuffleDeck.style.display = 'none'
+    endGameJS.style.display = 'flex'
+  } else {
+    for (let i = 0; i < 12; i++) {
+      gridSpace[i].innerHTML = ''
+    }
+    newGrid()
+    console.log(deck)
   }
-  newGrid()
-  console.log('Reshuffled Deck')
-  console.log(deck)
 }
 
 //Set the properties of a newly gotten card to a space on the grid
@@ -147,44 +157,59 @@ function addProperties(location, topCard) {
 
 //After Correct Set, Add 3 New Cards and Remove Old Ones
 function addThreeNew() {
-  deck.indexOf(currentChoice[0])
-  currentChoice[0].innerHTML = ''
-  currentChoice[1].innerHTML = ''
-  currentChoice[2].innerHTML = ''
-
-  if (currentChoice[0].id[1] === '0') {
-    gridSpace.push(document.getElementById(currentChoice[0]))
-    topCard1 = addCardToGrid()
-    addProperties(currentChoice[0].id[2], topCard1)
+  if (deck.length < 1) {
+    deck.indexOf(currentChoice[0])
+    currentChoice[0].innerHTML = ''
+    currentChoice[1].innerHTML = ''
+    currentChoice[2].innerHTML = ''
+    inAppUpdate.innerText =
+      'You are at the end of the deck. No new cards will be added, but you can continue to look for SETS. Once you are unable to find any more SET, click the End button to view your score!'
+    reShuffleDeck.style.display = 'none'
+    endGameJS.style.display = 'flex'
+    resetFoundSet()
   } else {
-    gridSpace.push(document.getElementById(currentChoice[0]))
-    topCard1 = addCardToGrid()
-    addProperties(currentChoice[0].id[1] + currentChoice[0].id[2], topCard1)
-  }
+    deck.indexOf(currentChoice[0])
+    currentChoice[0].innerHTML = ''
+    currentChoice[1].innerHTML = ''
+    currentChoice[2].innerHTML = ''
 
-  if (currentChoice[1].id[1] === '0') {
-    gridSpace.push(document.getElementById(currentChoice[1]))
-    topCard2 = addCardToGrid()
-    addProperties(currentChoice[1].id[2], topCard2)
-  } else {
-    gridSpace.push(document.getElementById(currentChoice[1]))
-    topCard2 = addCardToGrid()
-    addProperties(currentChoice[1].id[1] + currentChoice[1].id[2], topCard2)
-  }
+    if (currentChoice[0].id[1] === '0') {
+      gridSpace.push(document.getElementById(currentChoice[0]))
+      topCard1 = addCardToGrid()
+      addProperties(currentChoice[0].id[2], topCard1)
+    } else {
+      gridSpace.push(document.getElementById(currentChoice[0]))
+      topCard1 = addCardToGrid()
+      addProperties(currentChoice[0].id[1] + currentChoice[0].id[2], topCard1)
+    }
 
-  if (currentChoice[2].id[1] === '0') {
-    gridSpace.push(document.getElementById(currentChoice[2]))
-    topCard3 = addCardToGrid()
-    addProperties(currentChoice[2].id[2], topCard3)
-  } else {
-    gridSpace.push(document.getElementById(currentChoice[2]))
-    topCard3 = addCardToGrid()
-    addProperties(currentChoice[2].id[1] + currentChoice[2].id[2], topCard3)
+    if (currentChoice[1].id[1] === '0') {
+      gridSpace.push(document.getElementById(currentChoice[1]))
+      topCard2 = addCardToGrid()
+      addProperties(currentChoice[1].id[2], topCard2)
+    } else {
+      gridSpace.push(document.getElementById(currentChoice[1]))
+      topCard2 = addCardToGrid()
+      addProperties(currentChoice[1].id[1] + currentChoice[1].id[2], topCard2)
+    }
+
+    if (currentChoice[2].id[1] === '0') {
+      gridSpace.push(document.getElementById(currentChoice[2]))
+      topCard3 = addCardToGrid()
+      addProperties(currentChoice[2].id[2], topCard3)
+    } else {
+      gridSpace.push(document.getElementById(currentChoice[2]))
+      topCard3 = addCardToGrid()
+      addProperties(currentChoice[2].id[1] + currentChoice[2].id[2], topCard3)
+    }
+    resetFoundSet()
+    console.log(deck)
   }
-  resetFoundSet()
-  console.log(deck)
 }
+//----------------------------
 
+//Sets Score Count Global Variable
+let numOfSets = 0
 //Set Verification - ALL Must be TURNED true for a set to occur
 let numberVerified = false
 let shapeVerified = false
@@ -194,15 +219,18 @@ let colorVerified = false
 function activateComparison() {
   checkForSet()
   if (numberVerified && shapeVerified && shadeVerified && colorVerified) {
-    console.log(currentChoice)
+    numOfSets += 1
     addThreeNew()
     inAppUpdate.innerText = 'You got a SET!'
   } else {
+    numOfSets -= 1
     resetFoundSet()
     inAppUpdate.innerText = 'That is not a SET, Try Again!'
   }
 }
+//----------------------------
 
+//Reset The Selected Set Board To Empty
 function resetFoundSet() {
   currentChoice[0].classList.remove('selected')
   currentChoice[1].classList.remove('selected')
@@ -216,6 +244,7 @@ function resetFoundSet() {
   currentChoice = []
   inAppUpdate.innerText = ''
 }
+//----------------------------
 
 //Compare Cards to One Another To See if Set Found for Use in selectCard() Function
 function checkForSet() {
@@ -291,7 +320,15 @@ function checkForSet() {
     //console.log('shadeVerify = False!')
   }
 }
+//----------------------------
 
+function endGamePlay() {
+  fullBoard.innerHTML = ''
+  endGameInfoJS.style.display = 'flex'
+  endGameTitle.style.display = 'flex'
+  endGameTitle2.style.display = 'flex'
+  endGameInfoJS.innerText = numOfSets
+}
 //Empty Array for selection when user is choosing SET
 let currentChoice = []
 //Click GridSpaces Event Listener Callback Function
@@ -315,11 +352,15 @@ function selectCard(e) {
 }
 //EVENT LISTENERS
 
-//Doesn't work yet
+//Reshuffle Deck Event Listender
 reShuffleDeck.addEventListener('click', noSetsReshuffle)
+//----------------------------
 
-//Event Listener for loop for all gridSpace Locations
-//Click GridSpaces
+//Select Cards Event Listener
 for (let i = 0; i < 12; i++) {
   gridSpace[i].addEventListener('click', selectCard)
 }
+//----------------------------
+
+//End Game Event Listener
+endGameJS.addEventListener('click', endGamePlay)
