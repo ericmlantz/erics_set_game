@@ -37,17 +37,9 @@ The project itself was deployed and can be viewed [here.](surge.com)
 ### ***Screenshots***
 <a id="screenshots"></a>
 
-#### **Each card has four features, which can vary as follows:**
+#### **GAME IN ACTION:**
 ![image](https://www.ultraboardgames.com/set/gfx/game1.jpg)
 #### **Game Grid**
-![Image]()
-
-#### **Shuffle Active Cards Button**
-![Image]()
-
-
-#### **Restart Game Button**
-![Image]()
 
 ***
 <a id="updates"></a>
